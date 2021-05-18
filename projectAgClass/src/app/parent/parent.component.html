@@ -1,0 +1,200 @@
+
+  <!-- <app-header></app-header>
+  <div> -->
+   <!-- <section class="body1" >
+  <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="enseingnants">Enseingnants</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="etudiant">Eleves</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="classe">Classes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="plannings">Planning</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="">Déconnexion</a>
+      </li>
+    </ul>
+    <h5 class="display-4 text-center">Bonjour variable nom</h5>
+    <div class="container mt-5"> 
+  <div class="jumbotron">
+     <div class="row">
+      <a class="btn" href="#" role="button" >Enseignants</a>
+      <a class="btn" href="#" role="button">Eleves</a>
+     </div>
+      <div class="row">
+      <a class="btn" href="#" role="button">Classes</a>
+      <a class="btn" href="#" role="button">Plannings</a>
+    </div>
+  </div>
+  </div>
+  </section>
+</div>-->
+<!-- <section class="body">  -->
+
+
+
+  <!-- <div class="container-fluid">
+      <div class="row nav">
+      <a class="btn" (click)="onAddParent()">Ajouter un Enseignant</a>       
+      <a class="btn" (click)="onGetListParents()">Liste des Enseignants</a>  
+    </div>
+
+<!----------------- AFFICHER LISTE ENSEIGNANTS ------------------------>
+        <!-- <div class="panel-body" * ngIf="mode==3">
+              <div class="row texte-center"  * ngIf="showMsg">
+                    <div class="col-xs-12">
+                      <p class="alert alert-success">
+                          <strong>{{msg}}</strong>
+                      </p>
+                    </div>
+                  </div>
+      <div class="container clo-md-12 col-xs-6">
+          <table class="table" * ngIf="parents">
+            <caption>Listes des enseignants</caption>
+            <thead>
+            <tr>
+              <th>nom</th><th>prénom</th><th>Email</th><th>numéro de tél</th><th> </th><th> </th>
+            </tr>
+          </thead>
+          <tbody>
+       <tr *ngFor="let e of parents| paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };let i = index" [class.active]="i == currentIndex">  
+              <td>{{e.firstname | uppercase}}</td>
+              <td>{{e.lastname | titlecase}}</td>
+              <td>{{e.email}}</td>
+              <td>{{e.phone}}</td>
+          <td> <a class="btn btn-danger fas fa-trash-alt" (click)="onDeleteParent(e)">Supprimer</a>   </td>
+        <td><a class="btn btn-primary fa fa-refresh" (click)="onEditParent(e)">Mettre à jour</a></td> 
+        </tr> 
+        </tbody>
+          </table> 
+          <div class="d-flex justify-content-center">
+            <pagination-controls 
+              previousLabel="Precédant" 
+              nextLabel="Suivant" 
+              (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+     </div>
+        </div> 
+    </div>
+     </div> -->
+
+<!----------------- AFFICHER LE FORMULAIRE POUR AJOUTER UN ENSEIGNANT ---------------->
+<!-- <div >
+   <div  class="panel-body" * ngIf="mode==2">
+        <div class="container col-8" >
+        <h3 class="text-center">Ajouter un nouveau enseignant</h3>
+            <div class="jumbotron">
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    
+                      <form #f="ngForm" (ngSubmit)="onSaveParent(f.value)">
+                        <div class="form-group">
+                          <label class="control-label">Nom</label>
+                          <input minlength="3" class="form-control" 
+                          [(ngModel)]="parent.firstname" #firstname="ngModel"
+                          [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }" type="text" name="firstname" required >
+                          <div class="invalid-feedback" *ngIf="f.submitted && firstname.invalid">
+                            <p *ngIf="firstname.errors.required">firstName is required</p>
+                          </div>
+                    </div>
+                            
+                        <div class="form-group">
+                          <label class="control-label">Prénom</label>
+                          <input class="form-control" type="text" name="lastname"[(ngModel)]="parent.lastname" #lastname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }" required >
+                          <div class="invalid-feedback" *ngIf="f.submitted && lastname.invalid">
+                            <p *ngIf="lastname.errors.required">lastName is required</p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label">Email</label>
+                          <input class="form-control" type="text" [(ngModel)]="parent.email" name="email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
+                          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Must be a valid email address</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label">Numéro de tél</label>
+                          <input class="form-control" type="text" name="phone" [(ngModel)]="parent.phone"  #phone="ngModel" required>
+                        </div>
+                        <button class="btn btn-success" [disabled]="!f.form.valid" type="submit">Enregistrer</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div> -->
+
+  <!----------------- AFFICHER LES INFORMATIONS AJOUTER DU NOUVEAU ENSEIGNANT  ---------------->
+        <!-- <div class="panel-body" *ngIf="mode==1">
+          <div class="form-groupe">
+            <label>id : </label>
+            <label>{{currentParent.id}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Nom :</label>
+            <label>{{currentParent.firstname}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Prénom :</label>
+            <label>{{currentParent.lastname}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Email :</label>
+            <label>{{currentParent.email}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Numéro de tél :</label>
+            <label>{{currentParent.phone}}</label>
+          </div>
+          <div>
+            <button class="btn btn-primary" routerLink="">Accueil admin</button>
+          </div>
+        </div>  -->
+        
+  <!---------------------  METTRE A JOUR UN ENSEIGNANT  ---------------->
+  
+  <!-- <div class="panel-body" *ngIf="mode==4">
+        <div class="container">
+          <div class="panel panle-default" >
+              <div class="panel-heading">Edition Enseignant</div>
+              <div class="panel-body" *ngIf="currentParent">
+                  <form #f="ngForm" (ngSubmit)="onUpdateParent(f.value)">
+                      <div class="form-group" style="display:none">
+                        <label class="control-label">ID</label>
+                        <input class="form-control" type="number" name="id" ngModel [(ngModel)]="currentParent.id">
+                      </div>
+                      <div>
+                        <label class="control-label">Nom</label>
+                        <input class="form-control" type="text" name="firstname" ngModel [(ngModel)]="currentParent.firstname">
+                      </div>
+                        <div class="form-group">
+                      <label class="control-label">Prénom</label>
+                      <input class="form-control" type="text" name="lastname" ngModel [(ngModel)]="currentParent.lastname" >
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Email</label>
+                      <input class="form-control" type="text" name="email" ngModel [(ngModel)]="currentParent.email">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Numéro de tél</label>
+                      <input class="form-control" type="text" name="phone" ngModel [(ngModel)]="currentParent.phone">
+                    </div>
+                    <button class="btn btn-success" type="submit">Mettre à jour</button>
+                    </form>
+              </div>
+          </div>
+      </div>
+        </div>
+</div> --> 
+    <!-- </section>
+<app-footer></app-footer> -->

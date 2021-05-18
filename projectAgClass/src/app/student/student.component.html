@@ -1,0 +1,174 @@
+
+  <app-header></app-header>
+  <section class="body">
+  <div class="container-fluid">
+      <div class="row nav">
+      <a class="btn" (click)="onAddStudent()">Ajouter un Eleve</a>       
+      <a class="btn" (click)="onGetListStudents()">Liste des Eleves</a>  
+    </div>
+
+<!----------------- AFFICHER LISTE des ELEVES ------------------------>
+        <div class="panel-body" *ngIf="mode==3">
+              <div class="row texte-center"  *ngIf="showMsg">
+                    <div class="col-xs-12">
+                      <p class="alert alert-success">
+                          <strong>{{msg}}</strong>
+                      </p>
+                    </div>
+                  </div>
+      <div class="container clo-md-12 col-xs-6">
+          <table class="table" *ngIf="students">
+            <caption>Listes des élèves</caption>
+            <thead>
+            <tr>
+              <th>nom</th><th>prénom</th><th>date de naissance</th><th>classe</th><th>parent</th><th>enseignant</th>
+            </tr>
+          </thead>
+          <tbody>
+       <tr *ngFor="let e of students| paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };let i = index" [class.active]="i == currentIndex">  
+              <td>{{e.firstname | uppercase}}</td>
+              <td>{{e.lastname | titlecase}}</td>
+              <td>{{e.dateOfBirth |  date: 'dd / MM / yyyy'}}</td>
+              <td>{{e.classroom }}</td>
+              <td>{{e.parent }}</td>
+              <td>{{e.teacher }}</td>
+          <td> <a class="btn btn-delete" (click)="onDeleteStudent(e)"><i class=" fas fa-trash-alt fa-2x"></i>Supprimer</a></td>
+        <td><a class="btn btn-edit" (click)="onEditStudent(e)"><i class="far fa-edit fa-2x"></i>Modifier </a> </td> 
+        </tr> 
+        </tbody>
+          </table> 
+          <div class="d-flex justify-content-center">
+            <pagination-controls 
+              previousLabel="Precédant" 
+              nextLabel="Suivant" 
+              (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+     </div>
+        </div> 
+    </div>
+     </div>
+
+<!----------------- AFFICHER LE FORMULAIRE POUR AJOUTER UN ELEVE ---------------->
+<div >
+   <div  class="panel-body" *ngIf="mode==2">
+        <div class="container col-8" >
+        <h3 class="text-center">Ajouter un nouveau élève</h3>
+            <div class="jumbotron">
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    
+                      <form #f="ngForm" (ngSubmit)="onSaveStudent(f.value)">
+                        <div class="form-group">
+                          <label class="control-label">Nom</label>
+                          <input minlength="3" class="form-control" 
+                         #firstname ngModel type="text" name="firstname" required >
+                          
+                    </div>
+                            
+                        <div class="form-group">
+                          <label class="control-label">Prénom</label>
+                          <input class="form-control" type="text" name="lastname"  #lastname ngModel required >
+                         
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label">Date de naissance</label>
+                          <input class="form-control" type="date" name="dateOfBirth" #dateOfBirth ngModel required>
+                        </div> 
+                        <div class="form-group">
+                          <label class="control-label">Classe</label>
+                          <input class="form-control" type="text" name="classroom" #classroom ngModel required>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label">Parent</label>
+                          <input class="form-control" type="number" name="parent" #parent ngModel required>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label">Enseignant</label>
+                          <input class="form-control" type="number" name="teacher" #teacher ngModel required>
+                        </div>
+                        <button class="btn btn-success" [disabled]="!f.form.valid" type="submit">Enregistrer</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+
+  <!----------------- AFFICHER LES INFORMATIONS AJOUTER DU NOUVEAU ENSEIGNANT  ---------------->
+        <!-- <div class="panel-body" *ngIf="mode==1">
+          <div class="form-groupe">
+            <label>id : </label>
+            <label>{{currentStudents.id}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Nom :</label>
+            <label>{{currentStudents.firstname}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Prénom :</label>
+            <label>{{currentStudents.lastname}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Email :</label>
+            <label>{{currentStudents.email}}</label>
+          </div>
+          <div class="form-groupe">
+            <label>Numéro de tél :</label>
+            <label>{{currentStudents.phone}}</label>
+          </div>
+          <div>
+            <button class="btn btn-primary" routerLink="">Accueil admin</button>
+          </div>
+        </div>  -->
+        
+  <!---------------------  METTRE A JOUR UN ELEVE  ---------------->
+ 
+  <div class="panel-body" *ngIf="mode==4">
+        <div class="container">
+          <div class="panel panle-default" >
+
+              <div class="panel-heading">Edition Eleve</div>
+              
+              <div class="panel-body" *ngIf="currentStudent">
+                  <form #f="ngForm" (ngSubmit)="onUpdateStudent(f.value)">
+                      <div class="form-group" style="display:none">
+                        <label class="control-label">ID</label>
+                        <input class="form-control" type="number" name="id" ngModel [(ngModel)]="currentStudent.id">
+                      </div>
+                      <div>
+                        <label class="control-label">Nom</label>
+                        <input class="form-control" type="text" name="firstname" ngModel [(ngModel)]="currentStudent.firstname">
+                      </div>
+                        <div class="form-group">
+                      <label class="control-label">Prénom</label>
+                      <input class="form-control" type="text" name="lastname" ngModel [(ngModel)]="currentStudent.lastname" >
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">date de naissance</label>
+                      <input class="form-control" type="date" value="" name="dateOfBirth" ngModel [(ngModel)]="currentStudent.dateOfBirth">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Classe</label>
+                      <input class="form-control" type="text" name="classroom" ngModel [(ngModel)]="currentStudent.classroom" >
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Parent</label>
+                      <input class="form-control" type="text" name="parent" ngModel [(ngModel)]="currentStudent.parent" >
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Enseignant</label>
+                      <input class="form-control" type="text" name="teacher" ngModel [(ngModel)]="currentStudent.teacher" >
+                    </div>
+                    <button class="btn btn-success" type="submit">Mettre à jour</button>
+                    </form>
+              </div>
+          </div>
+      </div>
+        </div>
+</div>
+    </section>
+<app-footer></app-footer>

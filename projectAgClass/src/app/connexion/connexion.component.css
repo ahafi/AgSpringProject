@@ -1,0 +1,24 @@
+
+.titre{
+    font-style: italic;
+    font-size: 2rem;
+}
+.card{
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow:5px 5px 5px;
+    color: rgb(177, 110, 9);
+}
+.body{
+    background-image: url("../../assets/img/connexion1.jpg");
+    background-size:cover;
+    background-color: rgb(231, 211, 172);
+    padding: 50px;
+}
+
+input.ng-invalid.ng-dirty{
+    border-bottom-color:red !important ;
+    box-shadow:0 1px 0 0 red !important ;
+}
+
+

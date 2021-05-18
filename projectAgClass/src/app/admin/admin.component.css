@@ -1,0 +1,55 @@
+.header{
+  background-color: orange; 
+}
+.titre{
+  font-style: italic;
+  font-size: 2rem;
+}
+.logo{
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;  
+}
+.nav{
+  background: rgb(197, 203, 207);
+  height: 50px;
+}
+
+.nav a:hover{
+  color: rgb(26, 1, 83);
+}
+
+.body{
+  background-color: rgb(231, 211, 172);
+  padding-bottom: 5px;
+}
+.footer{
+  background-color: orange;
+}
+
+.btn
+{
+height: 260px ;
+width: 260px;
+margin: 10px;
+color:black;
+font-size: 1.5rem;
+background-color: #73e0db;
+border: solid 3px;
+border-color: #05397e;
+text-align: center;
+box-shadow:5px 2px 5px rgb(105, 69, 3);;
+}
+
+.btn:hover
+{
+background-color: #eb7f3c;
+}
+
+.btn a
+{
+display:block;
+}
+.row{
+  justify-content: center;
+}

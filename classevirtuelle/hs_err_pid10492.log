@@ -1,0 +1,218 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 67108864 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./open/src/hotspot/os/windows/os_windows.cpp:3472), pid=10492, tid=2812
+#
+# JRE version:  (15.0.1+9) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (15.0.1+9-18, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages com.classe.classevirtuelle.ClassevirtuelleApplication
+
+Host: Intel(R) Xeon(R) CPU E31220 @ 3.10GHz, 4 cores, 3G,  Windows 10 , 64 bit Build 19041 (10.0.19041.662)
+Time: Wed Jan 20 11:47:56 2021 Paris, Madrid elapsed time: 0.495297 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000022c4cbd6040):  JavaThread "Unknown thread" [_thread_in_vm, id=2812, stack(0x0000008715b00000,0x0000008715c00000)]
+
+Stack: [0x0000008715b00000,0x0000008715c00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x62ae9a]
+V  [jvm.dll+0x781389]
+V  [jvm.dll+0x782ae3]
+V  [jvm.dll+0x783143]
+V  [jvm.dll+0x216265]
+V  [jvm.dll+0x6281d9]
+V  [jvm.dll+0x61cd15]
+V  [jvm.dll+0x2d01fd]
+V  [jvm.dll+0x2d0062]
+V  [jvm.dll+0x2d603c]
+V  [jvm.dll+0x325b2a]
+V  [jvm.dll+0x3251f4]
+V  [jvm.dll+0x2a717a]
+V  [jvm.dll+0x2a8318]
+V  [jvm.dll+0x75e101]
+V  [jvm.dll+0x3343e4]
+V  [jvm.dll+0x73e826]
+V  [jvm.dll+0x3b7777]
+V  [jvm.dll+0x3b9201]
+C  [jli.dll+0x52fb]
+C  [ucrtbase.dll+0x214c2]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x4d0d1]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffd67a34ff0, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000022c4cc055a0 GCTaskThread "GC Thread#0" [stack: 0x0000008715c00000,0x0000008715d00000] [id=7288]
+  0x0000022c4cc0edd0 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000008715d00000,0x0000008715e00000] [id=9976]
+  0x0000022c4cc0f9c0 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000008715e00000,0x0000008715f00000] [id=10036]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd67228047]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000022c4cbd2f50] Heap_lock - owner thread: 0x0000022c4cbd6040
+
+Heap address: 0x00000000c0600000, size: 1018 MB, Compressed Oops mode: 32-bit
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+Heap:
+ garbage-first heap   total 65536K, used 0K [0x00000000c0600000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+ Metaspace       used 0K, capacity 0K, committed 0K, reserved 0K
+  class space    used 0K, capacity 0K, committed 0K, reserved 0K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
+
+Card table byte_map: [0x0000022c64000000,0x0000022c64200000] _byte_map_base: 0x0000022c639fd000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0x0000022c4cc05d90, (CMBitMap*) 0x0000022c4cc05dd0
+ Prev Bits: [0x0000022c64400000, 0x0000022c653e8000)
+ Next Bits: [0x0000022c653f0000, 0x0000022c663d8000)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.009 Loaded shared library C:\Program Files\Java\jdk-15.0.1\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff650a30000 - 0x00007ff650a3f000 	C:\Program Files\Java\jdk-15.0.1\bin\javaw.exe
+0x00007ffd977f0000 - 0x00007ffd979e6000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffd7c9e0000 - 0x00007ffd7c9f2000 	C:\Program Files\Avast Software\Avast\aswhook.dll
+0x00007ffd967f0000 - 0x00007ffd968ad000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffd95520000 - 0x00007ffd957e9000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffd95260000 - 0x00007ffd95360000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffd8e0b0000 - 0x00007ffd8e0c8000 	C:\Program Files\Java\jdk-15.0.1\bin\jli.dll
+0x00007ffd968d0000 - 0x00007ffd9697c000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffd95850000 - 0x00007ffd958ee000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffd96520000 - 0x00007ffd965bc000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffd96120000 - 0x00007ffd9624b000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffd969b0000 - 0x00007ffd96b50000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffd95200000 - 0x00007ffd95222000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffd966f0000 - 0x00007ffd9671a000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffd95360000 - 0x00007ffd9546b000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffd94f30000 - 0x00007ffd94fcd000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffd8e050000 - 0x00007ffd8e069000 	C:\Program Files\Java\jdk-15.0.1\bin\VCRUNTIME140.dll
+0x00007ffd73a50000 - 0x00007ffd73ceb000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4\COMCTL32.dll
+0x00007ffd8f910000 - 0x00007ffd8f91a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffd96980000 - 0x00007ffd969b0000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffd92570000 - 0x00007ffd9257c000 	C:\Program Files\Java\jdk-15.0.1\bin\vcruntime140_1.dll
+0x00007ffd7e310000 - 0x00007ffd7e3a1000 	C:\Program Files\Java\jdk-15.0.1\bin\msvcp140.dll
+0x00007ffd66f70000 - 0x00007ffd67ace000 	C:\Program Files\Java\jdk-15.0.1\bin\server\jvm.dll
+0x00007ffd967e0000 - 0x00007ffd967e8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffd8abe0000 - 0x00007ffd8abe9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffd96680000 - 0x00007ffd966eb000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffd82ec0000 - 0x00007ffd82ee7000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffd92eb0000 - 0x00007ffd92ec2000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffd92080000 - 0x00007ffd9208a000 	C:\Program Files\Java\jdk-15.0.1\bin\jimage.dll
+0x00007ffd8e870000 - 0x00007ffd8ea54000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffd8e840000 - 0x00007ffd8e86c000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffd95130000 - 0x00007ffd951b0000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffd8df00000 - 0x00007ffd8df25000 	C:\Program Files\Java\jdk-15.0.1\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-15.0.1\bin;C:\WINDOWS\SYSTEM32;C:\Program Files\Avast Software\Avast;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4;C:\Program Files\Java\jdk-15.0.1\bin\server
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: com.classe.classevirtuelle.ClassevirtuelleApplication
+java_class_path (initial): C:\Users\fujitsu\Desktop\projet1\classevirtuelle\target\test-classes;C:\Users\fujitsu\Desktop\projet1\classevirtuelle\target\classes;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot-devtools\2.4.1\spring-boot-devtools-2.4.1.jar;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot\2.4.1\spring-boot-2.4.1.jar;C:\Users\fujitsu\.m2\repository\org\springframework\spring-context\5.3.2\spring-context-5.3.2.jar;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.4.1\spring-boot-autoconfigure-2.4.1.jar;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\2.4.1\spring-boot-starter-data-jpa-2.4.1.jar;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot-starter-aop\2.4.1\spring-boot-starter-aop-2.4.1.jar;C:\Users\fujitsu\.m2\repository\org\springframework\spring-aop\5.3.2\spring-aop-5.3.2.jar;C:\Users\fujitsu\.m2\repository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;C:\Users\fujitsu\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\2.4.1\spring-boot-starter-jdbc-2.4.1.jar;C:\Users\fujitsu\.m2\repository\com\zaxxer\HikariCP\3.4.5\HikariCP-3.4.5.jar;C:\Users\fujitsu\.m2\repository\org\springframework\spring-jdbc\5.3.2\spring-jdbc-5.3.2.jar;C:\Users\fujitsu\.m2\repository\jakarta\transaction\jakarta.transaction-api\1.3.3\jakarta.transaction-api-1.3.3.jar;C:\Users\fujitsu\.m2\repository\jakarta\persistence\jakarta.persistence-api\2.2.3\jakarta.persistence-api-2.2.3.jar;C:\Users\fujitsu\.m2\repository\org\hibernate\hibernate-core\5.4.25.Final\hibernate-core-5.4.25.Final.jar;C:\Users\fujitsu\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\fujitsu\.m2\repository\org\javassist\javassist\3.27.0-GA\javassist-3.27.0-GA.jar;C:\Users\fujitsu\.m2\repository\net\bytebuddy\byte-buddy\1.10.18\byte-buddy-1.10.18.jar;C:\Users\fujitsu\.m2\repository\antlr\antlr\2.7.7\antlr-2.7
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 67108864                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1067450368                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5832780                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122912730                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122912730                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 1067450368                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:/Users/fujitsu/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_14.0.2.v20200815-0932/jre/bin/server;C:/Users/fujitsu/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_14.0.2.v20200815-0932/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\composer;C:\Program Files\Symfony;C:\apache-maven-3.6.3\bin;C:\Users\fujitsu\AppData\Local\Microsoft\WindowsApps;C:\Users\fujitsu\AppData\Roaming\npm;C:\Users\fujitsu\AppData\Local\Yarn\bin;C:\Users\fujitsu\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\WebStorm 2020.2.2\bin;;C:\wamp64\bin\php\php7.4.9;C:\Users\fujitsu\AppData\Roaming\Composer\vendor\bin;C:\Users\fujitsu\Desktop;
+USERNAME=fujitsu
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.662)
+OS uptime: 6 days 3:33 hours
+
+CPU: total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 42 stepping 7 microcode 0x2f, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, vzeroupper, avx, aes, clmul, tsc, tscinvbit, clflush
+
+Memory: 4k page, system-wide physical 4070M (510M free)
+TotalPageFile size 16358M (AvailPageFile size 290M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 51M, peak: 115M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (15.0.1+9-18) for windows-amd64 JRE (15.0.1+9-18), built on Sep 15 2020 14:43:54 by "mach5one" with unknown MS VC++:1925
+
+END.
